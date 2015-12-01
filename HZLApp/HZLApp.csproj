@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4B0C1C7C-D6D2-4EB5-AC37-0EB926F87611}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HZLApp</RootNamespace>
+    <AssemblyName>HZLApp</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutBoxHZL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutBoxHZL.Designer.cs">
+      <DependentUpon>AboutBoxHZL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChangePWD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangePWD.Designer.cs">
+      <DependentUpon>ChangePWD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\AccessHelper.cs" />
+    <Compile Include="DAL\DBAccessHelper.cs" />
+    <Compile Include="Entity\H_Bus_MainEntity.cs" />
+    <Compile Include="Entity\DataConvert.cs" />
+    <Compile Include="Entity\DataEntityBase.cs" />
+    <Compile Include="Entity\DataFieldAttribute.cs" />
+    <Compile Include="Entity\H_Bus_DetailEntity.cs" />
+    <Compile Include="Entity\H_CompanyEntity.cs" />
+    <Compile Include="Entity\H_UserEntity.cs" />
+    <Compile Include="LogHelper.cs" />
+    <Compile Include="LoginMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginMain.Designer.cs">
+      <DependentUpon>LoginMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HZLMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HZLMain.Designer.cs">
+      <DependentUpon>HZLMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserPublicClass.cs" />
+    <Compile Include="UserWindows\ChooseCompany.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserWindows\ChooseCompany.Designer.cs">
+      <DependentUpon>ChooseCompany.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserWindows\gdc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserWindows\gdc.Designer.cs">
+      <DependentUpon>gdc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserWindows\pkm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserWindows\pkm.Designer.cs">
+      <DependentUpon>pkm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserWindows\pkc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserWindows\pkc.Designer.cs">
+      <DependentUpon>pkc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserWindows\PreView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserWindows\PreView.Designer.cs">
+      <DependentUpon>PreView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserWindows\tlc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserWindows\tlc.Designer.cs">
+      <DependentUpon>tlc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserWindows\tlm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserWindows\tlm.Designer.cs">
+      <DependentUpon>tlm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WindowAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WindowAdd.Designer.cs">
+      <DependentUpon>WindowAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ZipFile.cs" />
+    <Compile Include="ZoomPic.cs" />
+    <EmbeddedResource Include="AboutBoxHZL.resx">
+      <DependentUpon>AboutBoxHZL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangePWD.resx">
+      <DependentUpon>ChangePWD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginMain.resx">
+      <DependentUpon>LoginMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HZLMain.resx">
+      <DependentUpon>HZLMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="UserWindows\ChooseCompany.resx">
+      <DependentUpon>ChooseCompany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserWindows\gdc.resx">
+      <DependentUpon>gdc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserWindows\pkm.resx">
+      <DependentUpon>pkm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserWindows\pkc.resx">
+      <DependentUpon>pkc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserWindows\PreView.resx">
+      <DependentUpon>PreView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserWindows\tlc.resx">
+      <DependentUpon>tlc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserWindows\tlm.resx">
+      <DependentUpon>tlm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WindowAdd.resx">
+      <DependentUpon>WindowAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DB\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\image\im1.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
