@@ -28,6 +28,8 @@ namespace HZLApp
         public string Pic = "";
         ZoomPic zp = new ZoomPic();
         LogHelper log = new LogHelper();
+        private decimal StausSum = 0;
+
         #endregion
 
         public MainForm()
@@ -174,7 +176,7 @@ namespace HZLApp
                 string strShow = "ID,CCID,CDetailID,CWidth,CHigh,CTS,CPFS,CDAdress";
                 int PageCount, RecordCount;
                 string strWhere = " where CCID='" + CompanyID + "'";
-                DataTable lsdt = db.ExecutePager(BeginPage, 6, "ID", strShow, strSql, strWhere, " ID DESC ", out PageCount, out RecordCount);
+                DataTable lsdt = db.ExecutePager(BeginPage, 6, "ID", strShow, strSql, strWhere, " CDetailID DESC ", out PageCount, out RecordCount);
                 if (PageCount > 1)
                 {
                     if (BeginPage == 1)
@@ -324,6 +326,16 @@ namespace HZLApp
         string vailedata()
         {
             string MSG = "";
+            if (!IsNumber(txt1cd.Text.Trim()) || !IsNumber(txt1gd.Text.Trim())||
+              !IsNumber(txt2cd.Text.Trim()) || !IsNumber(txt2gd.Text.Trim())||
+               !IsNumber(txt3cd.Text.Trim()) || !IsNumber(txt3gd.Text.Trim())||
+               !IsNumber(txt4cd.Text.Trim()) || !IsNumber(txt4gd.Text.Trim())||
+               !IsNumber(txt5cd.Text.Trim()) || !IsNumber(txt5gd.Text.Trim())||
+               !IsNumber(txt6cd.Text.Trim()) || !IsNumber(txt6gd.Text.Trim()))
+                 {
+                MSG = "数字！";
+            }
+
             if (!IsHandsetTelpone(txtphone.Text.Trim()))
             {
                MSG="电话号码不对，请输入13，14，15，17开头。";
@@ -338,6 +350,13 @@ namespace HZLApp
         /// <param name="e"></param>
         private void btnsave_Click(object sender, EventArgs e)
         {
+            //再算一次
+            decimal bb = StausSum + TxtToDec(txt1pfs.Text) + TxtToDec(txt2pfs.Text)
+                   + TxtToDec(txt3pfs.Text) + TxtToDec(txt4pfs.Text) + TxtToDec(txt5pfs.Text) +
+                   TxtToDec(txt6pfs.Text) ;
+            txtzpfs.Text = bb.ToString();
+            txtzje.Text = ComputerTotalSum(bb, TxtToDec(txtdj.Text.Trim()));
+               
 
             string messge = vailedata();
             if (messge != "")
@@ -705,7 +724,21 @@ namespace HZLApp
     {
       return System.Text.RegularExpressions.Regex.IsMatch(str_handset,@"^[1]+[3,5,7,4]+\d{9}");
     }
- 
+
+         private bool IsNumber(string str_handset)
+         {
+             if (!System.Text.RegularExpressions.Regex.IsMatch(str_handset, "^([0-9]{1,})$"))
+             {
+                 if (!System.Text.RegularExpressions.Regex.IsMatch(str_handset, "^([0-9]{1,}[.][0-9]*)$"))
+                     return false;
+                 else return true; 
+             }
+             else return true;
+            
+             //return System.Text.RegularExpressions.Regex.IsMatch(str_handset, @"^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$");
+      
+         }
+
 
         #region 删除
         private void bt1delete_Click(object sender, EventArgs e)
@@ -862,6 +895,291 @@ namespace HZLApp
             }
         }
 
+        #endregion
+
+        string ComputerSum(decimal cd, decimal gd, decimal ts)
+        {
+            try
+            {
+                decimal sum = 0;
+                sum = cd * gd * ts;
+                 string[] str   =new string[6];
+                if(txt1dh.Text.Trim()!="")str[0]=txt1dh.Text.Trim();
+                if(txt2dh.Text.Trim()!="")str[1]=txt2dh.Text.Trim();
+               if(txt3dh.Text.Trim()!="")str[2]=txt3dh.Text.Trim();
+               if(txt4dh.Text.Trim()!="")str[3]=txt4dh.Text.Trim();
+               if(txt5dh.Text.Trim()!="")str[4]=txt5dh.Text.Trim(); 
+                if(txt6dh.Text.Trim()!="")str[5]=txt6dh.Text.Trim();
+               
+                DataSet ds = db.GetDSBusiness_Detail(CompanyID,str);
+                if (ds == null) StausSum = 0;
+                else { if (ds.Tables[0].Rows.Count <= 0)StausSum = 0;
+                else
+                {
+                    decimal aa=0;
+                    foreach(DataRow dr in ds.Tables[0].Rows)
+                    {
+                     aa=aa+TxtToDec(dr["CPFS"].ToString() );
+                    }
+                    StausSum = aa;
+                    }
+                }
+                decimal bb=StausSum + TxtToDec(txt1pfs.Text)+TxtToDec(txt2pfs.Text)
+                    +TxtToDec(txt3pfs.Text)+TxtToDec(txt4pfs.Text)+TxtToDec(txt5pfs.Text)+
+                    TxtToDec(txt6pfs.Text)+sum;
+                txtzpfs.Text = bb.ToString();
+                txtzje.Text = ComputerTotalSum(bb,TxtToDec(txtdj.Text.Trim()));
+                return sum.ToString().TrimEnd('.', '0');
+               
+            }
+            catch {
+                return "0";
+            }
+        }
+        string ComputerTotalSum(decimal zpfs, decimal dj)
+        {
+            try
+            {
+                decimal sum = 0;
+                sum = zpfs * dj;
+                return sum.ToString().TrimEnd('.', '0');
+            }
+            catch
+            {
+                return "0";
+            }
+        }
+
+        #region 计算
+        
+      
+        private void txt1cd_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    txt1pfs.Text = ComputerSum(TxtToDec(txt1cd.Text.Trim()), TxtToDec(txt1gd.Text.Trim()), TxtToDec(txt1ts.Text.Trim()));
+                }
+                catch { }
+                }
+        }
+
+        private void txt1gd_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    txt1pfs.Text = ComputerSum(TxtToDec(txt1cd.Text.Trim()), TxtToDec(txt1gd.Text.Trim()), TxtToDec(txt1ts.Text.Trim()));
+                }
+                catch { }
+            }
+        }
+
+        private void txt1ts_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    txt1pfs.Text = ComputerSum(TxtToDec(txt1cd.Text.Trim()), TxtToDec(txt1gd.Text.Trim()), TxtToDec(txt1ts.Text.Trim()));
+                }
+                catch { }
+            }
+        }
+
+        private void txt2cd_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    txt2pfs.Text = ComputerSum(TxtToDec(txt2cd.Text.Trim()), TxtToDec(txt2gd.Text.Trim()), TxtToDec(txt2ts.Text.Trim()));
+                }
+                catch { }
+            }
+        }
+
+        private void txt2gd_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    txt2pfs.Text = ComputerSum(TxtToDec(txt2cd.Text.Trim()), TxtToDec(txt2gd.Text.Trim()), TxtToDec(txt2ts.Text.Trim()));
+                }
+                catch { }
+            }
+        }
+
+        private void txt2ts_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    txt2pfs.Text = ComputerSum(TxtToDec(txt2cd.Text.Trim()), TxtToDec(txt2gd.Text.Trim()), TxtToDec(txt2ts.Text.Trim()));
+                }
+                catch { }
+            }
+        }
+
+        private void txt3cd_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    txt3pfs.Text = ComputerSum(TxtToDec(txt3cd.Text.Trim()), TxtToDec(txt3gd.Text.Trim()), TxtToDec(txt3ts.Text.Trim()));
+                }
+                catch { }
+            }
+        }
+
+        private void txt3gd_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    txt3pfs.Text = ComputerSum(TxtToDec(txt3cd.Text.Trim()), TxtToDec(txt3gd.Text.Trim()), TxtToDec(txt3ts.Text.Trim()));
+                }
+                catch { }
+            }
+        }
+
+        private void txt3ts_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    txt3pfs.Text = ComputerSum(TxtToDec(txt3cd.Text.Trim()), TxtToDec(txt3gd.Text.Trim()), TxtToDec(txt3ts.Text.Trim()));
+                }
+                catch { }
+            }
+        }
+
+        private void txt6ts_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    txt6pfs.Text = ComputerSum(TxtToDec(txt6cd.Text.Trim()), TxtToDec(txt6gd.Text.Trim()), TxtToDec(txt6ts.Text.Trim()));
+                }
+                catch { }
+            }
+        }
+
+        private void txt6cd_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    txt6pfs.Text = ComputerSum(TxtToDec(txt6cd.Text.Trim()), TxtToDec(txt6gd.Text.Trim()), TxtToDec(txt6ts.Text.Trim()));
+                }
+                catch { }
+            }
+        }
+
+        private void txt6gd_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    txt6pfs.Text = ComputerSum(TxtToDec(txt6cd.Text.Trim()), TxtToDec(txt6gd.Text.Trim()), TxtToDec(txt6ts.Text.Trim()));
+                }
+                catch { }
+            }
+        }
+
+        private void txt5ts_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    txt5pfs.Text = ComputerSum(TxtToDec(txt5cd.Text.Trim()), TxtToDec(txt5gd.Text.Trim()), TxtToDec(txt5ts.Text.Trim()));
+                }
+                catch { }
+            }
+        }
+
+        private void txt5cd_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    txt5pfs.Text = ComputerSum(TxtToDec(txt5cd.Text.Trim()), TxtToDec(txt5gd.Text.Trim()), TxtToDec(txt5ts.Text.Trim()));
+                }
+                catch { }
+            }
+        }
+
+        private void txt5gd_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    txt5pfs.Text = ComputerSum(TxtToDec(txt5cd.Text.Trim()), TxtToDec(txt5gd.Text.Trim()), TxtToDec(txt5ts.Text.Trim()));
+                }
+                catch { }
+            }
+        }
+
+        private void txt4ts_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    txt4pfs.Text = ComputerSum(TxtToDec(txt4cd.Text.Trim()), TxtToDec(txt4gd.Text.Trim()), TxtToDec(txt4ts.Text.Trim()));
+                }
+                catch { }
+            }
+        }
+
+        private void txt4cd_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    txt4pfs.Text = ComputerSum(TxtToDec(txt4cd.Text.Trim()), TxtToDec(txt4gd.Text.Trim()), TxtToDec(txt4ts.Text.Trim()));
+                }
+                catch { }
+            }
+        }
+
+        private void txt4gd_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    txt4pfs.Text = ComputerSum(TxtToDec(txt4cd.Text.Trim()), TxtToDec(txt4gd.Text.Trim()), TxtToDec(txt4ts.Text.Trim()));
+                }
+                catch { }
+            }
+        }
+
+        private void txtdj_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    txtzje.Text = ComputerTotalSum(TxtToDec(txtdj.Text.Trim()), TxtToDec(txtzpfs.Text.Trim()) );
+                }
+                catch { }
+            }
+        }
         #endregion
 
 

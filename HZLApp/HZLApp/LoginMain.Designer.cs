@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginMain));
             this.btnlogin = new System.Windows.Forms.Button();
             this.txtlogin = new System.Windows.Forms.TextBox();
             this.txtpwd = new System.Windows.Forms.TextBox();
@@ -39,9 +40,10 @@
             // 
             // btnlogin
             // 
-            this.btnlogin.Location = new System.Drawing.Point(66, 145);
+            this.btnlogin.Location = new System.Drawing.Point(165, 362);
+            this.btnlogin.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.btnlogin.Name = "btnlogin";
-            this.btnlogin.Size = new System.Drawing.Size(75, 23);
+            this.btnlogin.Size = new System.Drawing.Size(188, 58);
             this.btnlogin.TabIndex = 0;
             this.btnlogin.Text = "登录";
             this.btnlogin.UseVisualStyleBackColor = true;
@@ -49,43 +51,48 @@
             // 
             // txtlogin
             // 
-            this.txtlogin.Location = new System.Drawing.Point(154, 56);
+            this.txtlogin.Location = new System.Drawing.Point(385, 140);
+            this.txtlogin.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.txtlogin.Name = "txtlogin";
-            this.txtlogin.Size = new System.Drawing.Size(100, 21);
+            this.txtlogin.Size = new System.Drawing.Size(244, 42);
             this.txtlogin.TabIndex = 1;
             // 
             // txtpwd
             // 
-            this.txtpwd.Location = new System.Drawing.Point(154, 103);
+            this.txtpwd.Location = new System.Drawing.Point(385, 258);
+            this.txtpwd.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.txtpwd.Name = "txtpwd";
             this.txtpwd.PasswordChar = '*';
-            this.txtpwd.Size = new System.Drawing.Size(100, 21);
+            this.txtpwd.Size = new System.Drawing.Size(244, 42);
             this.txtpwd.TabIndex = 2;
             this.txtpwd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtpwd_KeyDown);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(88, 59);
+            this.label1.Location = new System.Drawing.Point(220, 148);
+            this.label1.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 12);
+            this.label1.Size = new System.Drawing.Size(133, 30);
             this.label1.TabIndex = 3;
             this.label1.Text = "用户名：";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(88, 106);
+            this.label2.Location = new System.Drawing.Point(220, 265);
+            this.label2.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 12);
+            this.label2.Size = new System.Drawing.Size(118, 30);
             this.label2.TabIndex = 4;
             this.label2.Text = "密 码：";
             // 
             // btncancel
             // 
-            this.btncancel.Location = new System.Drawing.Point(218, 145);
+            this.btncancel.Location = new System.Drawing.Point(545, 362);
+            this.btncancel.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.btncancel.Name = "btncancel";
-            this.btncancel.Size = new System.Drawing.Size(75, 23);
+            this.btncancel.Size = new System.Drawing.Size(188, 58);
             this.btncancel.TabIndex = 5;
             this.btncancel.Text = "取消";
             this.btncancel.UseVisualStyleBackColor = true;
@@ -95,16 +102,17 @@
             // 
             this.txtTitle.AutoSize = true;
             this.txtTitle.Font = new System.Drawing.Font("Microsoft YaHei", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtTitle.Location = new System.Drawing.Point(45, 9);
+            this.txtTitle.Location = new System.Drawing.Point(112, 22);
+            this.txtTitle.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(0, 35);
+            this.txtTitle.Size = new System.Drawing.Size(0, 89);
             this.txtTitle.TabIndex = 6;
             // 
             // LoginMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(341, 206);
+            this.ClientSize = new System.Drawing.Size(972, 570);
             this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.btncancel);
             this.Controls.Add(this.label2);
@@ -112,6 +120,8 @@
             this.Controls.Add(this.txtpwd);
             this.Controls.Add(this.txtlogin);
             this.Controls.Add(this.btnlogin);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.Name = "LoginMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "用户登录";

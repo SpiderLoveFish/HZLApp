@@ -69,13 +69,9 @@
             this.txt1dh = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.p1 = new System.Windows.Forms.Panel();
-            this.label38 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txt1gd = new System.Windows.Forms.TextBox();
             this.txt1cd = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
             this.p2 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.txt2gd = new System.Windows.Forms.TextBox();
@@ -567,27 +563,29 @@
             // txt4gd
             // 
             this.txt4gd.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txt4gd.Location = new System.Drawing.Point(8, 154);
+            this.txt4gd.Location = new System.Drawing.Point(13, 154);
             this.txt4gd.Margin = new System.Windows.Forms.Padding(8);
             this.txt4gd.Name = "txt4gd";
             this.txt4gd.Size = new System.Drawing.Size(66, 42);
             this.txt4gd.TabIndex = 2;
             this.txt4gd.Text = "0";
+            this.txt4gd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt4gd_KeyDown);
             // 
             // txt4cd
             // 
             this.txt4cd.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt4cd.Location = new System.Drawing.Point(166, -8);
+            this.txt4cd.Location = new System.Drawing.Point(166, 10);
             this.txt4cd.Margin = new System.Windows.Forms.Padding(8);
             this.txt4cd.Name = "txt4cd";
             this.txt4cd.Size = new System.Drawing.Size(132, 42);
             this.txt4cd.TabIndex = 1;
             this.txt4cd.Text = "0";
+            this.txt4cd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt4cd_KeyDown);
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(8, 2);
+            this.label16.Location = new System.Drawing.Point(8, 13);
             this.label16.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(163, 30);
@@ -648,6 +646,7 @@
             this.txt1ts.Name = "txt1ts";
             this.txt1ts.Size = new System.Drawing.Size(151, 42);
             this.txt1ts.TabIndex = 3;
+            this.txt1ts.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt1ts_KeyDown);
             // 
             // label13
             // 
@@ -680,47 +679,15 @@
             // 
             // p1
             // 
-            this.p1.Controls.Add(this.label38);
-            this.p1.Controls.Add(this.label37);
-            this.p1.Controls.Add(this.label36);
             this.p1.Controls.Add(this.pictureBox1);
             this.p1.Controls.Add(this.txt1gd);
             this.p1.Controls.Add(this.txt1cd);
-            this.p1.Controls.Add(this.label15);
             this.p1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.p1.Location = new System.Drawing.Point(8, 8);
             this.p1.Margin = new System.Windows.Forms.Padding(8);
             this.p1.Name = "p1";
             this.p1.Size = new System.Drawing.Size(483, 319);
             this.p1.TabIndex = 1;
-            // 
-            // label38
-            // 
-            this.label38.Location = new System.Drawing.Point(29, 198);
-            this.label38.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(30, 100);
-            this.label38.TabIndex = 6;
-            this.label38.Text = "↑｜｜";
-            // 
-            // label37
-            // 
-            this.label37.Location = new System.Drawing.Point(29, 40);
-            this.label37.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(30, 100);
-            this.label37.TabIndex = 5;
-            this.label37.Text = "｜｜↓";
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(297, 10);
-            this.label36.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(193, 30);
-            this.label36.TabIndex = 4;
-            this.label36.Text = "←―――――";
             // 
             // pictureBox1
             // 
@@ -741,6 +708,7 @@
             this.txt1gd.Size = new System.Drawing.Size(66, 42);
             this.txt1gd.TabIndex = 2;
             this.txt1gd.Text = "0";
+            this.txt1gd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt1gd_KeyDown);
             // 
             // txt1cd
             // 
@@ -751,16 +719,7 @@
             this.txt1cd.Size = new System.Drawing.Size(132, 42);
             this.txt1cd.TabIndex = 1;
             this.txt1cd.Text = "0";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(8, 10);
-            this.label15.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(163, 30);
-            this.label15.TabIndex = 0;
-            this.label15.Text = "――――→";
+            this.txt1cd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt1cd_KeyDown);
             // 
             // p2
             // 
@@ -794,6 +753,7 @@
             this.txt2gd.Size = new System.Drawing.Size(66, 42);
             this.txt2gd.TabIndex = 6;
             this.txt2gd.Text = "0";
+            this.txt2gd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt2gd_KeyDown);
             // 
             // txt2cd
             // 
@@ -804,6 +764,7 @@
             this.txt2cd.Size = new System.Drawing.Size(132, 42);
             this.txt2cd.TabIndex = 5;
             this.txt2cd.Text = "0";
+            this.txt2cd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt2cd_KeyDown);
             // 
             // label17
             // 
@@ -869,6 +830,7 @@
             this.txt2ts.Name = "txt2ts";
             this.txt2ts.Size = new System.Drawing.Size(151, 42);
             this.txt2ts.TabIndex = 9;
+            this.txt2ts.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt2ts_KeyDown);
             // 
             // label22
             // 
@@ -931,21 +893,23 @@
             this.txt3gd.Size = new System.Drawing.Size(66, 42);
             this.txt3gd.TabIndex = 6;
             this.txt3gd.Text = "0";
+            this.txt3gd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt3gd_KeyDown);
             // 
             // txt3cd
             // 
             this.txt3cd.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt3cd.Location = new System.Drawing.Point(163, -5);
+            this.txt3cd.Location = new System.Drawing.Point(181, 0);
             this.txt3cd.Margin = new System.Windows.Forms.Padding(8);
             this.txt3cd.Name = "txt3cd";
             this.txt3cd.Size = new System.Drawing.Size(132, 42);
             this.txt3cd.TabIndex = 5;
             this.txt3cd.Text = "0";
+            this.txt3cd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt3cd_KeyDown);
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(5, 5);
+            this.label18.Location = new System.Drawing.Point(8, 8);
             this.label18.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(163, 30);
@@ -1006,6 +970,7 @@
             this.txt3ts.Name = "txt3ts";
             this.txt3ts.Size = new System.Drawing.Size(157, 42);
             this.txt3ts.TabIndex = 9;
+            this.txt3ts.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt3ts_KeyDown);
             // 
             // label25
             // 
@@ -1090,6 +1055,7 @@
             this.txt4ts.Name = "txt4ts";
             this.txt4ts.Size = new System.Drawing.Size(161, 42);
             this.txt4ts.TabIndex = 9;
+            this.txt4ts.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt4ts_KeyDown);
             // 
             // label34
             // 
@@ -1152,21 +1118,23 @@
             this.txt5gd.Size = new System.Drawing.Size(66, 42);
             this.txt5gd.TabIndex = 6;
             this.txt5gd.Text = "0";
+            this.txt5gd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt5gd_KeyDown);
             // 
             // txt5cd
             // 
             this.txt5cd.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt5cd.Location = new System.Drawing.Point(201, 0);
+            this.txt5cd.Location = new System.Drawing.Point(201, 10);
             this.txt5cd.Margin = new System.Windows.Forms.Padding(8);
             this.txt5cd.Name = "txt5cd";
             this.txt5cd.Size = new System.Drawing.Size(132, 42);
             this.txt5cd.TabIndex = 5;
             this.txt5cd.Text = "0";
+            this.txt5cd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt5cd_KeyDown);
             // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(42, 10);
+            this.label20.Location = new System.Drawing.Point(37, 13);
             this.label20.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(163, 30);
@@ -1227,6 +1195,7 @@
             this.txt5ts.Name = "txt5ts";
             this.txt5ts.Size = new System.Drawing.Size(149, 42);
             this.txt5ts.TabIndex = 9;
+            this.txt5ts.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt5ts_KeyDown);
             // 
             // label31
             // 
@@ -1289,21 +1258,23 @@
             this.txt6gd.Size = new System.Drawing.Size(66, 42);
             this.txt6gd.TabIndex = 6;
             this.txt6gd.Text = "0";
+            this.txt6gd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt6gd_KeyDown);
             // 
             // txt6cd
             // 
             this.txt6cd.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt6cd.Location = new System.Drawing.Point(163, -8);
+            this.txt6cd.Location = new System.Drawing.Point(181, 10);
             this.txt6cd.Margin = new System.Windows.Forms.Padding(8);
             this.txt6cd.Name = "txt6cd";
             this.txt6cd.Size = new System.Drawing.Size(132, 42);
             this.txt6cd.TabIndex = 5;
             this.txt6cd.Text = "0";
+            this.txt6cd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt6cd_KeyDown);
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(5, 2);
+            this.label19.Location = new System.Drawing.Point(8, 10);
             this.label19.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(163, 30);
@@ -1364,6 +1335,7 @@
             this.txt6ts.Name = "txt6ts";
             this.txt6ts.Size = new System.Drawing.Size(166, 42);
             this.txt6ts.TabIndex = 9;
+            this.txt6ts.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt6ts_KeyDown);
             // 
             // label28
             // 
@@ -1538,6 +1510,7 @@
             this.txtdj.Size = new System.Drawing.Size(360, 42);
             this.txtdj.TabIndex = 6;
             this.txtdj.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtdj.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtdj_KeyDown);
             // 
             // txtzpfs
             // 
@@ -1583,6 +1556,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2544, 1528);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(8);
             this.Name = "MainForm";
             this.Text = "MainForm";
@@ -1679,7 +1653,6 @@
         private System.Windows.Forms.Panel p1;
         private System.Windows.Forms.CheckedListBox cksf;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txt1gd;
         private System.Windows.Forms.TextBox txt1cd;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -1758,9 +1731,6 @@
         private System.Windows.Forms.LinkLabel llper;
         private System.Windows.Forms.LinkLabel llnext;
         private System.Windows.Forms.Label lbcount;
-        private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.Label label38;
 
 
     }

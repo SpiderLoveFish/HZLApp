@@ -202,40 +202,7 @@ namespace HZLApp.DAL
       }
 
 
-      /// <summary>
-      /// 明细
-      /// </summary>
-      /// <param name="ue"></param>
-      /// <returns></returns>
-      public bool InsertH_Business(string CCID, string CDetailID,
-          decimal CWidth, decimal CHigh,
-          decimal TotalSquare, decimal Price, 
-          decimal TotalPrice)
-      {
-          bool result = true;
-          try
-          {
-              string SqlStr = "Insert into H_Business_Detail (CCID,CDetailID,CWidth,CHigh,DoTime) " +
-                  " values('" + CCID + "','" + CDetailID + "'," + CWidth + "," + CHigh + ",'" + DateTime.Now.ToString() + "') "+
-                    " Delete H_Business_Main where CCID='" + CCID + "'" +
-                  " Insert into H_Business_Main (CCID,ZTS,TotalSquare,Price,TotalPrice,DoTime) " +
-                 " values('" + CCID + "'," + CDetailID + "," + TotalSquare + "," + Price + "," + TotalPrice + ",'" + DateTime.Now.ToString() + "') ";
-
-
-              int intresult = AccessHelper.ExecuteNonQuery(strCon(), SqlStr, null);
-              if (intresult == 0) result = false;
-              else result = true;
-
-          }
-          catch (Exception ex)
-          {
-              log.wrirteLog("数据库操作", "客户明细增加", ex.Message); 
-              result = false;
-          }
-          return result;
-
-      }
-
+     
       /// <summary>
       /// 公司
       /// </summary>
@@ -355,14 +322,14 @@ namespace HZLApp.DAL
           {
               string SqlStr = "  " +
                   " Insert into H_Business_Detail (CCID,CDetailID,CWidth,CHigh,CTS, CPFS,CDAdress, DoTime) " +
-                  " values(@c1,@c2,@c3,@c4,@c5,@c6,@c7,@8) ";
+                  " values(@c1,@c2,round(@c3,2),round(@c4,2),@c5,@c6,@c7,@8) ";
               OleDbParameter[] prams = {
                                                      new OleDbParameter("@c1", hce.CCID),
                                                      new OleDbParameter("@c2", hce.CDetailID),
                                                        new OleDbParameter("@c3", hce.CWidth),
                                                      new OleDbParameter("@c4", hce.CHigh),
-                                                       new OleDbParameter("@c5", hce.CTS),
-                                                     new OleDbParameter("@c6", hce.CPFS),
+                                                      new OleDbParameter("@c5", hce.CTS),
+                                                      new OleDbParameter("@c6", hce.CPFS),
                                                       new OleDbParameter("@c7", hce.CDAdress),
                                                        new OleDbParameter("@c8", DateTime.Now.ToString())   };
 
@@ -434,6 +401,34 @@ namespace HZLApp.DAL
           catch (Exception ex)
           {
               log.wrirteLog("数据库操作", "Business_Main" + CCID, ex.Message);
+              return null;
+          }
+      }
+      public DataSet GetDSBusiness_Detail(string CCID,
+          string[] detailid)
+      {
+          try
+          {
+              string di="";
+              for (int i = 0; i < 6; i++)
+              {
+                  if (detailid[i] != "") di = di+"," + detailid[i];
+              }
+              if (di.Length > 0) di = di.Substring(1);
+              string SqlStr = "SELECT * FROM H_Business_Detail ";
+              if (CCID != "")
+                  SqlStr += "  WHERE CCID='" + CCID + "'";
+              if(di.Length>0)
+                  SqlStr += "  AND CDetailID NOT IN( '" + di + "')";
+            
+              DataSet ds = AccessHelper.ExecuteDataSet(strCon(), SqlStr, null);
+              if (ds == null) return null;
+              else return ds;
+
+          }
+          catch (Exception ex)
+          {
+              log.wrirteLog("数据库查询操作", "Detail" + CCID, ex.Message);
               return null;
           }
       }
