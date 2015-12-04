@@ -959,6 +959,7 @@ namespace HZLApp
             {
                 try
                 {
+                    txt1pfs.Text = "0";
                     txt1pfs.Text = ComputerSum(TxtToDec(txt1cd.Text.Trim()), TxtToDec(txt1gd.Text.Trim()), TxtToDec(txt1ts.Text.Trim()));
                 }
                 catch { }
@@ -971,6 +972,7 @@ namespace HZLApp
             {
                 try
                 {
+                    txt1pfs.Text = "0";
                     txt1pfs.Text = ComputerSum(TxtToDec(txt1cd.Text.Trim()), TxtToDec(txt1gd.Text.Trim()), TxtToDec(txt1ts.Text.Trim()));
                 }
                 catch { }
@@ -983,6 +985,7 @@ namespace HZLApp
             {
                 try
                 {
+                    txt1pfs.Text = "0"; 
                     txt1pfs.Text = ComputerSum(TxtToDec(txt1cd.Text.Trim()), TxtToDec(txt1gd.Text.Trim()), TxtToDec(txt1ts.Text.Trim()));
                 }
                 catch { }
@@ -995,6 +998,7 @@ namespace HZLApp
             {
                 try
                 {
+                    txt2pfs.Text = "0"; 
                     txt2pfs.Text = ComputerSum(TxtToDec(txt2cd.Text.Trim()), TxtToDec(txt2gd.Text.Trim()), TxtToDec(txt2ts.Text.Trim()));
                 }
                 catch { }
@@ -1007,6 +1011,7 @@ namespace HZLApp
             {
                 try
                 {
+                    txt2pfs.Text = "0"; 
                     txt2pfs.Text = ComputerSum(TxtToDec(txt2cd.Text.Trim()), TxtToDec(txt2gd.Text.Trim()), TxtToDec(txt2ts.Text.Trim()));
                 }
                 catch { }
@@ -1019,6 +1024,7 @@ namespace HZLApp
             {
                 try
                 {
+                    txt2pfs.Text = "0"; 
                     txt2pfs.Text = ComputerSum(TxtToDec(txt2cd.Text.Trim()), TxtToDec(txt2gd.Text.Trim()), TxtToDec(txt2ts.Text.Trim()));
                 }
                 catch { }
@@ -1031,6 +1037,7 @@ namespace HZLApp
             {
                 try
                 {
+                    txt3pfs.Text = "0"; 
                     txt3pfs.Text = ComputerSum(TxtToDec(txt3cd.Text.Trim()), TxtToDec(txt3gd.Text.Trim()), TxtToDec(txt3ts.Text.Trim()));
                 }
                 catch { }
@@ -1043,6 +1050,7 @@ namespace HZLApp
             {
                 try
                 {
+                    txt3pfs.Text = "0"; 
                     txt3pfs.Text = ComputerSum(TxtToDec(txt3cd.Text.Trim()), TxtToDec(txt3gd.Text.Trim()), TxtToDec(txt3ts.Text.Trim()));
                 }
                 catch { }
@@ -1055,6 +1063,7 @@ namespace HZLApp
             {
                 try
                 {
+                    txt3pfs.Text = "0"; 
                     txt3pfs.Text = ComputerSum(TxtToDec(txt3cd.Text.Trim()), TxtToDec(txt3gd.Text.Trim()), TxtToDec(txt3ts.Text.Trim()));
                 }
                 catch { }
@@ -1067,6 +1076,7 @@ namespace HZLApp
             {
                 try
                 {
+                    txt6pfs.Text = "0"; 
                     txt6pfs.Text = ComputerSum(TxtToDec(txt6cd.Text.Trim()), TxtToDec(txt6gd.Text.Trim()), TxtToDec(txt6ts.Text.Trim()));
                 }
                 catch { }
@@ -1079,6 +1089,7 @@ namespace HZLApp
             {
                 try
                 {
+                    txt6pfs.Text = "0"; 
                     txt6pfs.Text = ComputerSum(TxtToDec(txt6cd.Text.Trim()), TxtToDec(txt6gd.Text.Trim()), TxtToDec(txt6ts.Text.Trim()));
                 }
                 catch { }
@@ -1091,6 +1102,7 @@ namespace HZLApp
             {
                 try
                 {
+                    txt6pfs.Text = "0"; 
                     txt6pfs.Text = ComputerSum(TxtToDec(txt6cd.Text.Trim()), TxtToDec(txt6gd.Text.Trim()), TxtToDec(txt6ts.Text.Trim()));
                 }
                 catch { }
@@ -1103,6 +1115,7 @@ namespace HZLApp
             {
                 try
                 {
+                    txt5pfs.Text = "0"; 
                     txt5pfs.Text = ComputerSum(TxtToDec(txt5cd.Text.Trim()), TxtToDec(txt5gd.Text.Trim()), TxtToDec(txt5ts.Text.Trim()));
                 }
                 catch { }
@@ -1115,6 +1128,7 @@ namespace HZLApp
             {
                 try
                 {
+                    txt5pfs.Text = "0"; 
                     txt5pfs.Text = ComputerSum(TxtToDec(txt5cd.Text.Trim()), TxtToDec(txt5gd.Text.Trim()), TxtToDec(txt5ts.Text.Trim()));
                 }
                 catch { }
@@ -1127,6 +1141,7 @@ namespace HZLApp
             {
                 try
                 {
+                    txt5pfs.Text = "0"; 
                     txt5pfs.Text = ComputerSum(TxtToDec(txt5cd.Text.Trim()), TxtToDec(txt5gd.Text.Trim()), TxtToDec(txt5ts.Text.Trim()));
                 }
                 catch { }
@@ -1139,6 +1154,7 @@ namespace HZLApp
             {
                 try
                 {
+                    txt4pfs.Text = "0"; 
                     txt4pfs.Text = ComputerSum(TxtToDec(txt4cd.Text.Trim()), TxtToDec(txt4gd.Text.Trim()), TxtToDec(txt4ts.Text.Trim()));
                 }
                 catch { }
@@ -1151,6 +1167,7 @@ namespace HZLApp
             {
                 try
                 {
+                    txt4pfs.Text = "0"; 
                     txt4pfs.Text = ComputerSum(TxtToDec(txt4cd.Text.Trim()), TxtToDec(txt4gd.Text.Trim()), TxtToDec(txt4ts.Text.Trim()));
                 }
                 catch { }
@@ -1163,6 +1180,7 @@ namespace HZLApp
             {
                 try
                 {
+                    txt4pfs.Text = "0"; 
                     txt4pfs.Text = ComputerSum(TxtToDec(txt4cd.Text.Trim()), TxtToDec(txt4gd.Text.Trim()), TxtToDec(txt4ts.Text.Trim()));
                 }
                 catch { }

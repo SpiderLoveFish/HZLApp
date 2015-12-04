@@ -412,14 +412,14 @@ namespace HZLApp.DAL
               string di="";
               for (int i = 0; i < 6; i++)
               {
-                  if (detailid[i] != "") di = di+"," + detailid[i];
+                  if (detailid[i] != "") di = di+",'" + detailid[i]+"'";
               }
               if (di.Length > 0) di = di.Substring(1);
               string SqlStr = "SELECT * FROM H_Business_Detail ";
               if (CCID != "")
                   SqlStr += "  WHERE CCID='" + CCID + "'";
               if(di.Length>0)
-                  SqlStr += "  AND CDetailID NOT IN( '" + di + "')";
+                  SqlStr += "  AND CDetailID NOT IN( " + di + ")";
             
               DataSet ds = AccessHelper.ExecuteDataSet(strCon(), SqlStr, null);
               if (ds == null) return null;
